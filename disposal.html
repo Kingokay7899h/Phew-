@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disposal Module</title>
+  <link rel="stylesheet" href="disposal.css">
+</head>
+<body data-user-role="<?php echo isset($_SESSION['role']) ? htmlspecialchars($_SESSION['role']) : ''; ?>">
+  <div class="sidebar">
+    <h2>DAMS</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="inventory.html">Inventory</a></li>
+      <li><a href="procurement.html">Procurement</a></li>
+      <li class="active"><a href="disposal.html">Disposal</a></li>
+      <li><a href="maintenance.html">Maintenance</a></li>
+      <li><a href="student_issues.html">Student Issues</a></li>
+      <li><a href="logout.php">Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="button-group">
+      <button id="disposeCompletelyButton" style="display: none;" class="dispose-completely-btn">Dispose Completely</button>
+    </div>
+    <h1>Disposal Table</h1>
+    <table id="disposalTable">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="selectAll"></th>
+          <th>Lab ID</th>
+          <th>Item Name</th>
+          <th>Date</th>
+          <th>Disposal Reason</th>
+          <th>Disposal Status</th>
+          <th>View Form</th>
+        </tr>
+      </thead>
+      <tbody id="disposalBody"></tbody>
+    </table>
+
+    <h2 onclick="toggleSection('pastDisposalTable')" style="cursor: pointer;">Past Disposal Records ▼</h2>
+    <table id="pastDisposalTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>Lab ID</th>
+          <th>Item Name</th>
+          <th>Date</th>
+          <th>Disposal Reason</th>
+          <th>Disposal Status</th>
+          <th>View Form</th>
+        </tr>
+      </thead>
+      <tbody id="pastDisposalBody"></tbody>
+    </table>
+
+    <h2 onclick="toggleSection('rejectedDisposalTable')" style="cursor: pointer;">Rejected Disposal Records ▼</h2>
+    <table id="rejectedDisposalTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>Lab ID</th>
+          <th>Item Name</th>
+          <th>Date</th>
+          <th>Disposal Reason</th>
+          <th>Disposal Status</th>
+          <th>View Form</th>
+        </tr>
+      </thead>
+      <tbody id="rejectedDisposalBody"></tbody>
+    </table>
+  </div>
+
+  <script src="disposal.js"></script>
+</body>
+</html>
