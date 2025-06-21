@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposal Form - Annexure V</title>
+    <link rel="stylesheet" href="disposal_form.css">
+</head>
+<body data-user-role="<?php echo isset($_SESSION['role']) ? htmlspecialchars($_SESSION['role']) : ''; ?>">
+    <div class="form-container">
+        <h2>Annexure V</h2>
+        <h3>Proforma</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr. No.</th>
+                        <th>Description of Stores/Items</th>
+                        <th>Quantity/Weight</th>
+                        <th>Book/Original Value</th>
+                        <th>Date of Purchase</th>
+                        <th>Date/Month of item becoming Unserviceable</th>
+                        <th>Period of use</th>
+                        <th>Present condition of service</th>
+                        <th>Efforts to repair</th>
+                        <th>Location for condemnation</th>
+                        <th>Reason for Disposal</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody id="formItems"></tbody>
+            </table>
+        </div>
+
+        <div class="signature-section">
+            <div>
+                <div class="section-title">Prepared by:</div>
+                <p>Name: <span class="signature-line"><input type="text" id="preparedByName"></span></p>
+                <p>Designation: <span class="signature-line"><input type="text" id="preparedByDesignation"></span></p>
+            </div>
+            <div>
+                <div class="section-title">Reviewed by:</div>
+                <p>Name: <span class="signature-line"><input type="text" id="reviewedByName"></span></p>
+                <p>Designation: <span class="signature-line"><input type="text" id="reviewedByDesignation"></span></p>
+            </div>
+        </div>
+
+        <div class="section-title">Condemnation Committee Members</div>
+        <div class="committee-list">
+            <div class="committee-members-row">
+                <p>1. Name: Dr. Krupashankara M.S (Chairman)<br>Designation: Principal</p>
+                <p>2. Name: <span class="signature-line"><input type="text" id="committeeMember2Name"></span> (Member)<br>Designation: <span class="signature-line"><input type="text" id="committeeMember2Designation"></span></p>
+                <p>3. Name: Shri. Sunil Rauf (Member)<br>Designation: <span class="signature-line"><input type="text" id="committeeMember3Designation"></span></p>
+            </div>
+            <p>4. Name: <span class="signature-line"><input type="text" id="committeeMember4Name"></span> (Member)</p>
+            <p>5. Name: <span class="signature-line"><input type="text" id="committeeMember5Name"></span> (Invited Member)</p>
+        </div>
+
+        <button class="submit-button" id="submitButton">Submit</button>
+        <button class="action-button approve-button" id="approveButton" style="display: none;">Approve</button>
+        <button class="action-button reject-button" id="rejectButton" style="display: none;">Reject</button>
+    </div>
+
+    <div id="rejectReasonModal" class="modal">
+        <div class="modal-content reject-reason">
+            <span class="close" onclick="closeRejectReasonModal()">×</span>
+            <h2>Reason for Rejection</h2>
+            <form id="rejectReasonForm">
+                <label for="rejectReasonInput">Enter Reason:</label>
+                <textarea id="rejectReasonInput" required placeholder="Type the reason for rejection..."></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="disposal_form.js"></script>
+</body>
+</html>
