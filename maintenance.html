@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Module</title>
+  <link rel="stylesheet" href="maintenance.css">
+</head>
+<body data-user-role="<?php echo isset($_SESSION['role']) ? htmlspecialchars($_SESSION['role']) : ''; ?>">
+  <div class="sidebar">
+    <h2>DAMS</h2>
+    <ul>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="inventory.html">Inventory</a></li>
+      <li><a href="procurement.html">Procurement</a></li>
+      <li><a href="disposal.html">Disposal</a></li>
+      <li class="active"><a href="maintenance.html">Maintenance</a></li>
+      <li><a href="student_issues.html">Student Issues</a></li>
+      <li><a href="logout.php">Logout</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="button-group">
+      <button id="sendDisposalRequest" style="display: none;">Send Disposal Request</button>
+    </div>
+    <h1>Maintenance Table</h1>
+    <table id="maintenanceTable">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="selectAll"></th>
+          <th>Sr No</th>
+          <th>Lab ID</th>
+          <th>Item Name</th>
+          <th>Date</th>
+          <th>Last Maintenance</th>
+          <th>Maintenance Due</th>
+          <th>Service Provider</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="maintenanceBody"></tbody>
+    </table>
+  </div>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h2>Edit Maintenance Details</h2>
+      <form id="editForm">
+        <input type="hidden" id="editSrNo">
+        <label>Lab ID:</label>
+        <input type="text" id="editLabId" disabled>
+        <label>Item Name:</label>
+        <input type="text" id="editItemName" disabled>
+        <label>Last Maintenance:</label>
+        <input type="date" id="editLastMaintenance" required>
+        <label>Maintenance Due:</label>
+        <input type="date" id="editMaintenanceDue" required>
+        <label>Service Provider:</label>
+        <input type="text" id="editServiceProvider">
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="disposalReasonModal" class="modal">
+    <div class="modal-content disposal-reason">
+      <span class="close" onclick="closeDisposalReasonModal()">×</span>
+      <h2>Reason for Disposal</h2>
+      <form id="disposalReasonForm">
+        <label for="disposalReasonInput">Enter Reason:</label>
+        <textarea id="disposalReasonInput" required placeholder="Type the reason for disposal..."></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="maintenance.js"></script>
+</body>
+</html>
